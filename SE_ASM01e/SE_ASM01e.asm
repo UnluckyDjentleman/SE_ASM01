@@ -15,7 +15,7 @@ getmin PROTO:DWORD,:DWORD
 getmax PROTO:DWORD,:DWORD
 .data
 ddArr dword 7,2,3,4,5,6,7,8,9,6
-result byte "getmin+getmax= ",0
+result byte "getmin+getmax=",0
 resultl equ $-(result+1)
 consTitle byte "Result of operation",0
 consolehandle dword 0h
@@ -40,6 +40,9 @@ main PROC
 	push number
 	push offset resulting
 	call int_to_char
+	push offset consTitle
+	push offset result
+	call printconsole
 	push offset consTitle
 	push offset resulting
 	call printconsole

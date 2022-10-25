@@ -15,8 +15,8 @@ printconsole PROTO:DWORD,:DWORD
 .stack 4096
 .const
 .data
-ddArr dword 19,23,3,46,5,63,1,75,8,12
-result byte "getmin+getmax= ",0
+ddArr dword 19,23,3,46,5,63,-1,75,8,12
+result byte "getmin+getmax=",0
 resultl equ $-(result+1)
 consTitle byte "Result of operation",0
 consolehandle dword 0h
@@ -36,6 +36,9 @@ main PROC
 	push number
 	push offset resulting
 	call int_to_char
+	push offset consTitle
+	push offset result
+	call printconsole
 	push offset consTitle
 	push offset resulting
 	call printconsole
